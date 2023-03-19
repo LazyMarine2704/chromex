@@ -29,7 +29,7 @@ def getColorName(r, g, b):
 
 #Impotando base de dados das cores.
 index=["color","color_name","hex","R","G","B"]
-csv = pd.read_csv('C://Projetos/chromex/assets/database/colors.csv', names=index, header=None)
+csv = pd.read_csv('C://Projetos/chromex/assets/database/colors.csv', names=index, header=0)
 
 def scanImage(imagem):
     lista = rgbList()
