@@ -4,35 +4,49 @@ import pyttsx3
 import numpy as np
 import pandas as pd
 
+class rgbList():    
+    def __init__(self):
+        self.listaR = []
+        self.listaG = []
+        self.listaB = []
+
+    def appendNewRGB(self, r, g, b):
+        self.listaR.append(r)
+        self.listaG.append(g)
+        self.listaB.append(b)
+
+    def media(self):
+        return [np.average(self.listaR), np.average(self.listaG), np.average(self.listaB)]
+
+def getColorName(r, g, b):
+    minimum = 10000
+    for i in range(len(csv)):
+        d = abs(r- int(csv.loc[i,"R"])) + abs(g- int(csv.loc[i,"G"]))+ abs(b- int(csv.loc[i,"B"]))
+        if(d<=minimum):
+            minimum = d
+            cname = csv.loc[i,"color_name"]
+    return cname 
+
 #Impotando base de dados das cores.
 index=["color","color_name","hex","R","G","B"]
 csv = pd.read_csv('C://Projetos/chromex/assets/database/colors.csv', names=index, header=None)
 
-#Calcula a distância para definir a cor
-def getColorName(R,G,B):
-    minimum = 10000
-    for i in range(len(csv)):
-        d = abs(R- int(csv.loc[i,"R"])) + abs(G- int(csv.loc[i,"G"]))+ abs(B- int(csv.loc[i,"B"]))
-        if(d<=minimum):
-            minimum = d
-            cname = csv.loc[i,"color_name"]
-    return cname
-
 def scanImage(imagem):
-    # Obtém as dimensões da imagem
+    lista = rgbList()
     height, width, channels = imagem.shape
     print(height, width, channels)
 
     # Percorre cada pixel da imagem e imprime seus valores RGB.
     for i in range(height):
         for j in range(width):
-            r, g, b = imagem[i, j]
-
-    captura_escaneada = getColorName(r, g, b)
-
-    return captura_escaneada
+            r, g, b = imagem[i,j]
+            lista.appendNewRGB(r, g, b)
     
-
+    cor = lista.media()
+    print(cor[0], cor[1], cor[2])
+    print(getColorName(round(cor[0]), round(cor[1]), round(cor[2])))
+    return getColorName(round(cor[0]), round(cor[1]), round(cor[2]))
+    
 #Inicia a câmera
 camera = cv2.VideoCapture(0)
 
@@ -67,3 +81,4 @@ while True:
 
 camera.release()
 cv2.destroyWindow('Chromex')
+exit()
