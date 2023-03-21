@@ -30,8 +30,9 @@ def getColorName(r, g, b):
     return cname 
 
 #Impotando base de dados das cores.
+
 index=["color","color_name","hex","R","G","B"]
-csv = pd.read_csv('C://Projetos/chromex/assets/database/colors.csv', names=index, header=0)
+csv = pd.read_csv("../chromex/assets/database/colors.csv", names=index, header=0)
 
 def scanImage(imagem):
     lista = rgbList()
@@ -60,7 +61,7 @@ while True:
         cv2.imshow('Chromex', frame)
 
     if cv2.waitKey(1) & 0xFF == ord('s'):
-        caminho = 'C://Projetos/chromex/assets/images/captura.jpg'
+        caminho = '../chromex/assets/images/captura.jpg'
         cv2.imwrite(caminho, frame)
         captura = cv2.imread(caminho)
         captura = cv2.convertScaleAbs(captura,1)
