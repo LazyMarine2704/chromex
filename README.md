@@ -9,3 +9,5 @@ Após isso, o programa envia estes valores para uma função que encontra um val
 
 <h2>Licensa</h2>
 A Licensa do Chromex é a GNU General Public License v3.0, encontrada no arquivo <a target="_blank" href="https://github.com/LazyMarine2704/chromex/blob/main/LICENSE.txt">LICENSE</a>
+
+Acesse o repositório em https://github.com/rubensantoniorosa2704/chromex
