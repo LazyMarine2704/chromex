@@ -6,10 +6,8 @@ class rgbList():
         self.listaG = []
         self.listaB = []
 
+    #Insere os valores de cada canal em sua lista respectiva.
     def appendNewRGB(self, r, g, b):
         self.listaR.append(r)
         self.listaG.append(g)
         self.listaB.append(b)
-
-    def mode(self):
-        return [st.mode(self.listaR), st.mode(self.listaG), st.mode(self.listaB)]

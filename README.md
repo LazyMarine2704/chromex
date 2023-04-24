@@ -13,3 +13,14 @@ Após isso, o programa envia estes valores para uma função que encontra um val
 A Licensa do Chromex é a GNU General Public License v3.0, encontrada no arquivo <a target="_blank" href="https://github.com/LazyMarine2704/chromex/blob/main/LICENSE.txt">LICENSE</a>
 
 Acesse o repositório em https://github.com/rubensantoniorosa2704/chromex
+
+<h1>Sobre os pacotes</h1>
+
+<h2>get_color_name.py</h2>
+A função "getColorName(r, g, b, csv)" recebe 4 parâmetros, um valor para r, outro para g, um para b, e um valor especificando o nome de uma tabela csv, usada para correlacionar os valores rgb com os nomes respectivos da cor mais próxima. A função então realiza um cálculo para comparar o valor rgb recebido na função com o valor mais próximo na tabela, e retorna o nome da cor mais próxima na tabela.
+
+<h2>scan_image.py</h2>
+A função "scanImage(imagem, csv)" descobre todos os valores rgb dentro de um retângulo central pré-especificado. Logo após, ele calcula a média para cada valor, e os envia para a função getColorName(), para retornar o nome da cor.
+
+<h2>rgb_list.py</h2>
+A classe rgbList() inicializa as listas para os valores de cada canal rgb. A função appendNewRGB(r, g, b) apenas adiciona os parâmetros para cada lista 

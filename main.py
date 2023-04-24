@@ -14,10 +14,10 @@ import os
 #Impotando base de dados das cores.
 path = os.getcwd()
 
-# Read CSV file at the beginning of the code
+#Lê o arquivo csv
 csv = pd.read_csv("colors.csv", names=["color","color_name","hex","R","G","B"], header=0)
 
-#Open Camera
+#Inicializa a câmera
 camera = cv2.VideoCapture(0)
 
 while True:
