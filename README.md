@@ -1,5 +1,7 @@
 ![CHROMEX](https://user-images.githubusercontent.com/86082354/226200929-89bed69a-20b1-47ec-a894-c3a507ae15b5.png)
 
+<h1>Se estiver usando linux, certifique-se de executar o programa pelo terminal com permissões de administrador</h1>
+
 <h1>Chromex</h1>
 Chromex é um programa Python que utiliza algumas bibliotecas para processar imagens capturadas pela câmera de um dispositivo e, em seguida, identificar a cor predominante na imagem utilizando uma base de dados de cores.
 
