@@ -2,7 +2,6 @@ from packages.get_color_name import getColorName
 
 def scanImage(imagem, csv):
     height, width, channels = imagem.shape
-    print(height, width, channels)
 
     #Calcula o retângulo central
     central_height = int(height * 0.1)
