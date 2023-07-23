@@ -37,10 +37,9 @@ while True:
         engine = pyttsx3.init()
         engine.say(captura_pronta)
         engine.runAndWait()
-        
+
     elif keyboard.is_pressed('q'):
         break
 
 camera.release()
 cv2.destroyWindow('Chromex')
-exit()
