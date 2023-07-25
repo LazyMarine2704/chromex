@@ -3,7 +3,7 @@ from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.camera import Camera
-from packages.scan_image import scanImage
+from modules.scan_image import scanImage
 import cv2
 import kivy
 import pandas as pd
@@ -11,7 +11,7 @@ import pyttsx3
 kivy.config.Config.set('kivy', 'log_level', 'critical')
 
 # Base de dados de valores RGB
-csv = pd.read_csv("colors.csv", names=["color","color_name","hex","R","G","B"], header=0)
+csv = pd.read_csv("utils/colors.csv", names=["color","color_name","hex","R","G","B"], header=0)
 
 class CameraButton(Button):
     pass
@@ -20,7 +20,7 @@ class CameraApp(App):
     def build(self):
         layout = BoxLayout(orientation='vertical')
 
-        Builder.load_file('styles.kv') # Carrega o arquivos de estilos do Kivy.
+        Builder.load_file('kv_files/styles.kv') # Carrega o arquivos de estilos do Kivy.
 
         # Crie o widget da câmera e adicione ao layout
         self.camera = Camera(index=0, resolution=(640, 480), play=True)

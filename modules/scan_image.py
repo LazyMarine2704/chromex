@@ -1,4 +1,4 @@
-from packages.get_color_name import getColorName
+from modules.get_color_name import getColorName
 
 def scanImage(imagem, csv):
     height, width, channels = imagem.shape
