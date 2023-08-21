@@ -5,10 +5,8 @@ from kivy.uix.button import Button
 from kivy.uix.camera import Camera
 from modules.scan_image import scanImage
 import cv2
-import kivy
 import pandas as pd
 import pyttsx3
-kivy.config.Config.set('kivy', 'log_level', 'critical')
 
 # Base de dados de valores RGB
 csv = pd.read_csv("utils/colors.csv", names=["color","color_name","hex","R","G","B"], header=0)
