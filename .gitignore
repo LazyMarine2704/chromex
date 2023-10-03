@@ -1,0 +1,6 @@
+# Ignora arquivos do ambiente virtual
+venv/
+buildozer.spec
+*.pyc
+*.pyo
+__pycache__/
