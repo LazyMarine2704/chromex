@@ -6,22 +6,30 @@ import time
 
 class Chromex:
     def __init__(self, filename, csv) -> None:
-        
-        '''
-        Inicializa a instância do Chromex e as funções de reconhecimento de
-        cor.
-        '''
+        """
+        Inicializa a instância do Chromex e as funções de reconhecimento de cor.
 
+        Parâmetros:
+            - filename (str): Nome do arquivo para salvar a imagem capturada.
+            - csv (str): Nome do arquivo CSV com informações de cores.
+
+        Retorna:
+            Nenhum retorno explícito.
+        """
         self.filename = filename
-        self.csv = pd.read_csv(csv, names=["color","color_name","hex","R","G","B"], header=0)
+        self.csv = pd.read_csv(csv, names=["color", "color_name", "hex", "R", "G", "B"], header=0)
 
     def capturarImagem(self):
+        """
+        Captura uma imagem da câmera e a converte para RGB.
+
+        Retorna:
+            numpy.ndarray: A imagem capturada em formato RGB.
+        """
         screen = cv2.VideoCapture(0)
         screen.set(10, 0.5)  # Ajusta o balanço de branco (0.5 é o valor médio)
         screen.set(15, -2)   # Ajusta a exposição (-2 é um valor de exposição padrão)
 
-
-        # Tenta recuperar um frame da câmera e exibir na tela
         try:
             while True:
                 ret, frame = screen.read()
@@ -46,29 +54,30 @@ class Chromex:
             print(e)
 
     def getColorName(self, image) -> str:
+        """
+        Determina o nome da cor na imagem fornecida.
+
+        Parâmetros:
+            - image (numpy.ndarray): A imagem capturada em formato RGB.
+
+        Retorna:
+            str: O nome da cor na imagem.
+        """
         height, width, _ = image.shape
 
-        # Calcula o retângulo central
         central_height = int(height * 0.1)
         central_width = int(width * 0.1)
         central_top = int(height * 0.45)
         central_left = int(width * 0.45)
 
-        # Calcula a média de cada canal no retângulo central
-        r = int(image[
-            central_top:central_top + central_height,
-            central_left:central_left + central_width, 0
-        ].mean())
+        r = int(image[central_top:central_top + central_height,
+                      central_left:central_left + central_width, 0].mean())
 
-        g = int(image[
-            central_top:central_top + central_height,
-            central_left:central_left + central_width, 1
-        ].mean())
+        g = int(image[central_top:central_top + central_height,
+                      central_left:central_left + central_width, 1].mean())
 
-        b = int(image[
-            central_top:central_top + central_height,
-            central_left:central_left + central_width, 2
-        ].mean())
+        b = int(image[central_top:central_top + central_height,
+                      central_left:central_left + central_width, 2].mean())
 
         try:
             limiar = 75
@@ -88,7 +97,6 @@ class Chromex:
                     minimum_distance = distance
                     recognized_color = self.csv.loc[i, "color_name"]
 
-            # Adicione um limiar de distância para evitar correspondências incorretas
             if minimum_distance <= limiar:
                 return recognized_color
             else:
@@ -97,8 +105,16 @@ class Chromex:
         except Exception as e:
             print(e)
 
-
     def sayColorName(self, color_name):
+        """
+        Diz o nome da cor utilizando um mecanismo text-to-speech.
+
+        Parâmetros:
+            - color_name (str): O nome da cor a ser pronunciado.
+
+        Retorna:
+            Nenhum retorno explícito.
+        """
         engine = pyttsx3.init()
         engine.say(color_name)
         print(color_name)
@@ -106,14 +122,7 @@ class Chromex:
 
 if __name__ == '__main__':
     while True:
-        # Crie uma instância da classe Chromex
         chromex = Chromex('captura.jpg', 'colors.csv')
-
-        # Captura a imagem
         captura = chromex.capturarImagem()
-
-        # Obtém o nome da cor
         color_name = chromex.getColorName(captura)
-
-        # Diz o nome da cor
         chromex.sayColorName(color_name)
