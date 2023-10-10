@@ -1,38 +1,74 @@
-![CHROMEX (1)](https://github.com/rubensantoniorosa2704/chromex/assets/86082354/c8521e66-14f0-4584-845e-415ebfe38dc3)
+![banner](https://github.com/rubensantoniorosa2704/chromex/assets/86082354/1eec9b93-7db3-46aa-a1d4-7ba6f454fd3f)
 
 <h1>Chromex</h1>
-Chromex é um programa Python que utiliza algumas bibliotecas para processar imagens capturadas pela câmera de um dispositivo e, em seguida, identificar a cor predominante na imagem utilizando uma base de dados.
+Chromex é uma biblioteca desenvolvida em Python que processa imagens da câmera e identifica a cor predominante.
 
 <h2>Funcionamento</h2>
-O programa captura um frame da webcam do computador, percorre esta imagem coletando os valores RGB de cada pixel, e os adiciona em uma lista.
-Após isso, o programa envia estes valores para uma função que encontra um valor rgb parecido na base de dados "color.csv".
-
-<p><b>Se estiver usando linux, certifique-se de executar o programa pelo terminal com permissões de administrador</b></p>
+O programa usa a câmera do computador para capturar uma imagem em tempo real. Ele então analisa essa imagem para determinar a cor predominante na área central. Em seguida, utiliza um arquivo CSV para associar os valores de cor a nomes de cores conhecidos e pronuncia o nome da cor predominante usando um mecanismo text-to-speech.
 
 <h2>Licensa</h2>
 A Licensa do Chromex é a GNU General Public License v3.0, encontrada no arquivo <a target="_blank" href="https://github.com/LazyMarine2704/chromex/blob/main/LICENSE.txt">LICENSE</a>
 
 Acesse o repositório em https://github.com/rubensantoniorosa2704/chromex
 
-<h2>Sobre os pacotes</h2>
-<h4>Os arquivos do programa foram organizados em módulos para facilitar a manutenção e o compreendimento.</h4>
+<h2>Documentação</h2>
+<p>Nesta versão, o propósito foi modularizar simplificar a lógica das funções já existentes. Agora, ao invés de arquivos separados, todas as funções se encontram no mesmo arquivo, dentro da classe <b>Chromex()</b>, o cerne do nosso código. A classe Chromex() leva os seguinte parâmetros: o nome do arquivo que será salvo como a captura da imagem; e o caminho para a base de dados de cores.</p>
 
 <ul>
 <li>
-<h2>get_color_name.py</h2>
-<p> A função "getColorName(r, g, b, csv)" recebe 4 parâmetros, um valor para r, outro para g, um para b, e um valor especificando o nome de uma tabela csv, usada para correlacionar os valores rgb com os nomes respectivos da cor mais próxima. A função então realiza um cálculo para comparar o valor rgb recebido na função com o              valor mais próximo na tabela, e retorna o nome da cor mais próxima na tabela.
+<h2>getColorName()</h2>
+<p> A função getColorName determina o nome da cor predominante em uma imagem RGB fornecida. Ela calcula as médias dos canais de cor (vermelho, verde e azul) em uma área central da imagem, compara essas médias com uma tabela de cores e retorna o nome da cor mais próxima. Um limiar é usado para garantir correspondências precisas, e "Cor desconhecida" é retornado se nenhuma cor correspondente for encontrada.
+  
+        """
+        Esta função recebe uma imagem capturada em formato RGB como entrada e calcula a cor predominante
+        na área central da imagem. Para isso, ela divide a imagem em um retângulo central e calcula a
+        média dos valores de cor (R, G, B) nessa área. Em seguida, compara esses valores com uma tabela
+        de cores predefinida carregada a partir de um arquivo CSV para encontrar a cor mais próxima.
+
+        Parâmetros:
+            - image (numpy.ndarray): A imagem capturada em formato RGB.
+
+        Retorna:
+            str: O nome da cor predominante na imagem.
+        """
+        
 </p>
 </li>
   
 <li>
-<h2>scan_image.py</h2>
-<p>A função "scanImage(imagem, csv)" descobre todos os valores rgb dentro de um retângulo central pré-especificado. Logo após, ele calcula a média para cada valor, e os envia para a função getColorName(), para retornar o nome da cor.
+<h2>capturarImagem()</h2>
+<p> Captura e converte a imagem da câmera.
+  
+        """
+        Captura uma imagem da câmera e a converte para o formato RGB.
+
+        Esta função ativa a câmera do computador, captura uma imagem em tempo real e a converte para
+        o formato RGB. Ela permite que o usuário visualize a imagem em uma janela, pressione a tecla 's'
+        para salvar a imagem capturada no arquivo especificado e, em seguida, retorna a imagem em RGB.
+
+        Retorna:
+            numpy.ndarray: A imagem capturada em formato RGB.
+        """
+    
 </p>
 </li>
 
 <li>
-<h2>rgb_list.py</h2>
-<p>A classe rgbList() inicializa as listas para os valores de cada canal rgb. A função appendNewRGB(r, g, b) apenas adiciona os parâmetros para cada lista.</p>
+<h2>sayColorName()</h2>
+<p>A classe rgbList() inicializa as listas para os valores de cada canal rgb. A função appendNewRGB(r, g, b) apenas adiciona os parâmetros para cada lista.
+
+        """
+        Diz o nome da cor usando um mecanismo text-to-speech.
+
+        Esta função utiliza a biblioteca `pyttsx3` para pronunciar o nome da cor especificada em voz alta.
+        Ela recebe o nome da cor como entrada e utiliza um mecanismo de síntese de voz para produzir a
+        saída de áudio correspondente. Além disso, imprime o nome da cor no console antes de pronunciá-lo.
+
+        Parâmetros:
+            - color_name (str): O nome da cor a ser pronunciado.
+        """
+      
+</p>
 </li>
 </ul>
 
@@ -67,6 +103,23 @@ Acesse o repositório em https://github.com/rubensantoniorosa2704/chromex
 
 <h3>Parabéns!</h3>
 <p>Você contribuiu com sucesso para o projeto! Agradecemos imensamente pelo seu apoio até aqui. S2</p>
+
+<h2>Perguntas Frequentes</h2>
+<ul>
+  <li><h3>Estou tentando executar o programa e não funciona.</h3></li>
+  <p>Confira se você tem o Python instalado, e se instalou todas as dependências necessárias. Antes de rodar o programa, navegue até a pasta raiz do projeto e digite o comando: pip install requirements.txt. Se estiver executando no Linux, não esqueça de executar como sudo, pois, devido ao acesso à câmera e ao teclado, o programa requer privilégios de administrador</p>
+  <li><h3>Quais são os comandos?</h3></li>
+  <p>Pressione 'S' para capturar a imagem e retornar a cor em voz alta, e pressione 'Q' para sair do programa.</p>
+  <li><h3>Onde encontro a documentação?</h3></li>
+  <p>A documentação detalhada das funções pode ser encontrada no próprio código, além deste arquivo README.md</p>
+  <br/>
+</ul>
+
+<h2>Futuramente...</h2>
+<ul>
+  <li>Criação de um pacote para o Python Package Index.</li>
+  <li>Novas funcionalidades...</li>
+</ul>
 
 <h1>Contatos</h1>
 <p>Caso precise de ajuda ou tenha algum feedback, mande um email para <a href="mailto:https://rubensrosaneto27@gmail.com">rubensrosaneto27@gmail.com</a></p>
