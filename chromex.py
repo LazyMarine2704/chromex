@@ -5,7 +5,7 @@ import keyboard
 import time
 
 class Chromex:
-    def __init__(self, filename, csv) -> None:
+    def __init__(self, csv) -> None:
         """
         Inicializa a instância do Chromex e as funções de reconhecimento de cor.
 
@@ -16,10 +16,9 @@ class Chromex:
         Retorna:
             Nenhum retorno explícito.
         """
-        self.filename = filename
         self.csv = pd.read_csv(csv, names=["color", "color_name", "hex", "R", "G", "B"], header=0)
 
-    def capturarImagem(self):
+    def capturarImagem(self, filename):
         """
         Captura uma imagem da câmera e a converte para RGB.
 
@@ -53,7 +52,7 @@ class Chromex:
         except cv2.error as e:
             print(e)
 
-    def getColorName(self, image) -> str:
+    def getColorName(self, image, csv) -> str:
         """
         Determina o nome da cor na imagem fornecida.
 
@@ -85,9 +84,9 @@ class Chromex:
             recognized_color = None
 
             for i in range(len(self.csv)):
-                r_csv = int(self.csv.loc[i, "R"])
-                g_csv = int(self.csv.loc[i, "G"])
-                b_csv = int(self.csv.loc[i, "B"])
+                r_csv = int(csv.loc[i, "R"])
+                g_csv = int(csv.loc[i, "G"])
+                b_csv = int(csv.loc[i, "B"])
 
                 distance = ((r - r_csv) ** 2 +
                             (g - g_csv) ** 2 +
@@ -119,10 +118,3 @@ class Chromex:
         engine.say(color_name)
         print(color_name)
         engine.runAndWait()
-
-if __name__ == '__main__':
-    while True:
-        chromex = Chromex('captura.jpg', 'colors.csv')
-        captura = chromex.capturarImagem()
-        color_name = chromex.getColorName(captura)
-        chromex.sayColorName(color_name)
