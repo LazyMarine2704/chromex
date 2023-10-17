@@ -4,3 +4,4 @@ buildozer.spec
 *.pyc
 *.pyo
 __pycache__/
+captura.png

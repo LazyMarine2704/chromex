@@ -16,6 +16,7 @@ class Chromex:
         Retorna:
             Nenhum retorno explícito.
         """
+
         self.csv = pd.read_csv(csv, names=["color", "color_name", "hex", "R", "G", "B"], header=0)
 
     def capturarImagem(self, filename):
@@ -79,7 +80,7 @@ class Chromex:
                       central_left:central_left + central_width, 2].mean())
 
         try:
-            limiar = 75
+            limiar = 79
             minimum_distance = float('inf')
             recognized_color = None
 

@@ -45,20 +45,13 @@ class CameraApp(App):
         return layout
 
     def button_press(self, *args):
-        # Salva a textura da câmera em um arquivo "captura.jpg"
         filename = "captura.jpg"
         self.camera.export_to_png(filename)
-
         captura = cv2.imread(filename)
         captura = cv2.convertScaleAbs(captura, 1)
         captura = cv2.cvtColor(captura, cv2.COLOR_BGR2RGB)
-
-        cor = self.chromex.getColorName(captura, self.chromex.csv)  # Remova o argumento 'self'
-
-        # Módulo de voz
-        engine = pyttsx3.init()
-        engine.say(cor)
-        engine.runAndWait()
+        cor = self.chromex.getColorName(captura, self.chromex.csv)
+        self.chromex.sayColorName(cor)
 
 if __name__ == '__main__':
     CameraApp().run()
