@@ -3,6 +3,9 @@
 <h1>Chromex</h1>
 Chromex é uma biblioteca desenvolvida em Python que processa imagens da câmera e identifica a cor predominante.
 
+<h2>Aviso</h2>
+Os arquivos 'app.py' e os respectivos arquivos kivy foram criados a fim de exemplificar o uso do programa, por isso, não são necessários para a execução das funções principais.
+
 <h2>Funcionamento</h2>
 O programa usa a câmera do computador para capturar uma imagem em tempo real. Ele então analisa essa imagem para determinar a cor predominante na área central. Em seguida, utiliza um arquivo CSV para associar os valores de cor a nomes de cores conhecidos e pronuncia o nome da cor predominante usando um mecanismo text-to-speech.
 
