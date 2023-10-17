@@ -5,7 +5,7 @@ import keyboard
 import time
 
 class Chromex:
-    def __init__(self, csv) -> None:
+    def __init__(self, filename, csv) -> None:
         """
         Inicializa a instância do Chromex e as funções de reconhecimento de cor.
 
@@ -16,7 +16,7 @@ class Chromex:
         Retorna:
             Nenhum retorno explícito.
         """
-
+        self.filename = filename
         self.csv = pd.read_csv(csv, names=["color", "color_name", "hex", "R", "G", "B"], header=0)
 
     def capturarImagem(self, filename):
@@ -80,7 +80,7 @@ class Chromex:
                       central_left:central_left + central_width, 2].mean())
 
         try:
-            limiar = 79
+            limiar = 80
             minimum_distance = float('inf')
             recognized_color = None
 

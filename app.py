@@ -28,7 +28,7 @@ class CameraApp(App):
     chromex = None  # Defina chromex como uma variável de classe
 
     def build(self):
-        self.chromex = Chromex("colors.csv")  # Inicialize chromex no método build
+        self.chromex = Chromex("captura.png", "colors.csv")  # Inicialize chromex no método build
         layout = BoxLayout(orientation='vertical')
 
         Builder.load_file('styles.kv') # Carrega o arquivos de estilos do Kivy.
@@ -45,7 +45,7 @@ class CameraApp(App):
         return layout
 
     def button_press(self, *args):
-        filename = "captura.jpg"
+        filename = self.chromex.filename
         self.camera.export_to_png(filename)
         captura = cv2.imread(filename)
         captura = cv2.convertScaleAbs(captura, 1)
