@@ -1,7 +1,7 @@
 ![banner](https://github.com/rubensantoniorosa2704/chromex/assets/86082354/1eec9b93-7db3-46aa-a1d4-7ba6f454fd3f)
 
 <h1>Chromex</h1>
-Chromex é uma biblioteca desenvolvida em Python que processa imagens da câmera e identifica a cor predominante.
+Chromex é uma biblioteca desenvolvida em Python que processa imagens da câmera e identifica a cor predominante. Este foi um projeto criado no curso de Graduação de Sistemas de Informação. O objetivo era aplicar conceitos de visão computacional ao desenvolvimento de software e fornecer uma ferramenta para a Associação de Deficientes Visuais de Brusque (ADVB).
 
 <h2>Aviso</h2>
 Os arquivos 'app.py' e os respectivos arquivos kivy foram criados a fim de exemplificar o uso do programa, por isso, não são necessários para a execução das funções principais.
