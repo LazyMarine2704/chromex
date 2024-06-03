@@ -1,0 +1,9 @@
+[flake8]
+bracketSpacing: false
+printWidth: 88
+proseWrap: always
+semi: true
+trailingComma: "es5"
+xmlWhitespaceSensitivity: "strict"
+max-line-length = 95
+ignore = E203
