@@ -21,7 +21,7 @@ Acesse o repositório em https://github.com/rubensantoniorosa2704/chromex
 <li>
 <h2>getColorName()</h2>
 <p> A função getColorName determina o nome da cor predominante em uma imagem RGB fornecida. Ela calcula as médias dos canais de cor (vermelho, verde e azul) em uma área central da imagem, compara essas médias com uma tabela de cores e retorna o nome da cor mais próxima. Um limiar é usado para garantir correspondências precisas, e "Cor desconhecida" é retornado se nenhuma cor correspondente for encontrada.
-  
+
         """
         Esta função recebe uma imagem capturada em formato RGB como entrada e calcula a cor predominante
         na área central da imagem. Para isso, ela divide a imagem em um retângulo central e calcula a
@@ -34,14 +34,14 @@ Acesse o repositório em https://github.com/rubensantoniorosa2704/chromex
         Retorna:
             str: O nome da cor predominante na imagem.
         """
-        
+
 </p>
 </li>
-  
+
 <li>
 <h2>capturarImagem()</h2>
 <p> Captura e converte a imagem da câmera.
-  
+
         """
         Captura uma imagem da câmera e a converte para o formato RGB.
 
@@ -52,7 +52,7 @@ Acesse o repositório em https://github.com/rubensantoniorosa2704/chromex
         Retorna:
             numpy.ndarray: A imagem capturada em formato RGB.
         """
-    
+
 </p>
 </li>
 
@@ -70,7 +70,7 @@ Acesse o repositório em https://github.com/rubensantoniorosa2704/chromex
         Parâmetros:
             - color_name (str): O nome da cor a ser pronunciado.
         """
-      
+
 </p>
 </li>
 </ul>
@@ -79,10 +79,10 @@ Acesse o repositório em https://github.com/rubensantoniorosa2704/chromex
 <h4>Deseja contribuir com o projeto? Fique atento às orientações abaixo!</h4>
 <ul>
   <li>Comece com um issue aberto: precisamos da sua ajuda para resolver bugs, ou mesmo para aprimorar a documentação! Iniciantes são bem vindos, procure pela tag "good first issue" para saber onde começar.</li>
-  
+
   <li>Crie um fork do projeto. Isso criará uma cópia do repositório original em sua conta do GitHub.</li><br>
   <img width="449" alt="capturar2" src="https://github.com/rubensantoniorosa2704/chromex/assets/86082354/304d1f64-4118-4e2d-a4eb-7ded21ddf3af"><br>
-  
+
   <li>Clone o repositório: vá para o repositório recém-forked e copie o URL do repositório. Em sua máquina local, abra um terminal e execute o seguinte comando para clonar o repositório em sua máquina:
   </li><br>
   <img width="442" alt="Capturar" src="https://github.com/rubensantoniorosa2704/chromex/assets/86082354/d1bc1e30-5f80-4d4f-92b6-f3a193129881"><br>
@@ -95,12 +95,12 @@ Acesse o repositório em https://github.com/rubensantoniorosa2704/chromex
 
   <li>Sincronize com o repositório original: antes de enviar suas alterações, lembre-se de sincronizar seu fork com o repositório original. Os seguintes comandos servem para definir o repositório remoto e sincronizar os seus arquivos com o repositório original</li><br>
   <img width="428" alt="Capturar" src="https://github.com/rubensantoniorosa2704/chromex/assets/86082354/a23590bb-69f8-4759-bfd8-0bc8cc3ca5dc"><br>
-  
+
   <li>Subir alterações. Agora é hora de subir o que você criou para o repositório remoto. Para isso, use o seguinte comando:</li><br>
   <img width="218" alt="Capturar" src="https://github.com/rubensantoniorosa2704/chromex/assets/86082354/93fda74e-4457-4d8a-a11c-0a1c3cdd6095"><br>
 
   <li>Crie um pull request: Vá para a página do seu fork no GitHub e clique no botão "Compare & pull request" (Comparar e abrir um pull request). Preencha as informações necessárias, incluindo uma descrição clara do que você fez nas alterações.</li>
-  
+
   <li>Espere pelo feedback dos mantenedores, e depois que o pull request for aceito e mesclado (merged) no projeto original, sincronize seu fork com o projeto principal usando o comando "git pull upstream main"</li>
 </ul>
 
