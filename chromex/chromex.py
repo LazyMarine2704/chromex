@@ -20,7 +20,9 @@ class Chromex:
             None
         """
         self.filename = filename
-        self.csv = pd.read_csv(csv, names=["color", "color_name", "hex", "R", "G", "B"], header=0)
+        self.csv = pd.read_csv(
+            csv, names=["color", "color_name", "hex", "R", "G", "B"], header=0
+        )
 
     def capturarImagem(self) -> np.ndarray:
         """
@@ -31,16 +33,16 @@ class Chromex:
         """
         screen = cv2.VideoCapture(0)
         screen.set(10, 0.5)  # Ajusta o balanço de branco (0.5 é o valor médio)
-        screen.set(15, -2)   # Ajusta a exposição (-2 é um valor de exposição padrão)
+        screen.set(15, -2)  # Ajusta a exposição (-2 é um valor de exposição padrão)
 
         try:
             while True:
                 ret, frame = screen.read()
-                cv2.imshow('frame', frame)
+                cv2.imshow("frame", frame)
                 cv2.waitKey(1)
 
-                if keyboard.is_pressed('s'):
-                    print('Tecla s pressionada')
+                if keyboard.is_pressed("s"):
+                    print("Tecla s pressionada")
                     cv2.imwrite(self.filename, frame)
                     captura = cv2.imread(self.filename)
                     captura = cv2.convertScaleAbs(captura, 1)
@@ -48,7 +50,7 @@ class Chromex:
                     time.sleep(1)
                     return captura
 
-                if keyboard.is_pressed('q'):
+                if keyboard.is_pressed("q"):
                     screen.release()
                     cv2.destroyAllWindows()
                     break
@@ -73,18 +75,33 @@ class Chromex:
         central_top = int(height * 0.45)
         central_left = int(width * 0.45)
 
-        r = int(image[central_top:central_top + central_height,
-                      central_left:central_left + central_width, 0].mean())
+        r = int(
+            image[
+                central_top : central_top + central_height,
+                central_left : central_left + central_width,
+                0,
+            ].mean()
+        )
 
-        g = int(image[central_top:central_top + central_height,
-                      central_left:central_left + central_width, 1].mean())
+        g = int(
+            image[
+                central_top : central_top + central_height,
+                central_left : central_left + central_width,
+                1,
+            ].mean()
+        )
 
-        b = int(image[central_top:central_top + central_height,
-                      central_left:central_left + central_width, 2].mean())
+        b = int(
+            image[
+                central_top : central_top + central_height,
+                central_left : central_left + central_width,
+                2,
+            ].mean()
+        )
 
         try:
             limiar = 80
-            minimum_distance = float('inf')
+            minimum_distance = float("inf")
             recognized_color = None
 
             for i in range(len(self.csv)):
@@ -92,9 +109,9 @@ class Chromex:
                 g_csv = int(self.csv.loc[i, "G"])
                 b_csv = int(self.csv.loc[i, "B"])
 
-                distance = ((r - r_csv) ** 2 +
-                            (g - g_csv) ** 2 +
-                            (b - b_csv) ** 2) ** 0.5
+                distance = (
+                    (r - r_csv) ** 2 + (g - g_csv) ** 2 + (b - b_csv) ** 2
+                ) ** 0.5
 
                 if distance < minimum_distance:
                     minimum_distance = distance
